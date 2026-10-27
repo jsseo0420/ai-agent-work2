@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>건물 부수기</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hud">
+    <div class="stat stat-score">
+      <span class="label">내 점수</span>
+      <span class="value" id="score">0</span>
+    </div>
+    <div class="stat stat-destroyed">
+      <span class="label">부순 건물</span>
+      <span class="value" id="destroyed">0 / 0</span>
+    </div>
+    <div class="stat stat-shots" id="shotsBox">
+      <span class="label">남은 발사</span>
+      <span class="value" id="shots">0</span>
+    </div>
+  </header>
+
+  <main id="stage">
+    <div class="world" id="world">
+      <canvas id="game"></canvas>
+      <div class="fog"></div>
+      <canvas id="fx"></canvas>
+    </div>
+    <div class="toast" id="toast">무기를 고르고 건물을 터치하세요!</div>
+    <div class="camera" aria-label="시점 조절">
+      <button type="button" id="compass" aria-label="북쪽이 위로 오게 맞추기"><span class="needle">▲</span><small>북쪽</small></button>
+      <button type="button" id="rotLeft" aria-label="왼쪽으로 회전">↺<small>왼쪽</small></button>
+      <button type="button" id="rotRight" aria-label="오른쪽으로 회전">↻<small>오른쪽</small></button>
+      <button type="button" id="tiltUp" aria-label="더 눕혀서 보기">⤴<small>눕히기</small></button>
+      <button type="button" id="tiltDown" aria-label="위에서 보기">⤵<small>세우기</small></button>
+      <button type="button" id="topView" aria-label="위성(위에서 보기) 시점으로 전환">🛰️<small>위성</small></button>
+    </div>
+    <div class="zoom">
+      <button type="button" id="zoomIn" aria-label="확대">＋</button>
+      <button type="button" id="zoomOut" aria-label="축소">－</button>
+      <button type="button" id="zoomReset" aria-label="처음 화면으로">⤢</button>
+    </div>
+    <div class="loading" id="loading">지도 불러오는 중…</div>
+  </main>
+
+  <nav class="weapons" id="weapons" aria-label="무기 선택"></nav>
+
+  <div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+    <div class="card">
+      <h2 id="resultTitle">게임 종료!</h2>
+      <p class="rank" id="rank"></p>
+      <div class="final-label">최종 점수</div>
+      <div class="final-score" id="finalScore">0</div>
+      <ul class="summary">
+        <li><span>부순 건물</span><b id="sumDestroyed">0</b></li>
+        <li><span>가한 피해 점수</span><b id="sumDamage">0</b></li>
+        <li><span>파괴 보너스</span><b id="sumBonus">0</b></li>
+      </ul>
+      <button type="button" class="restart" id="restart">다시 하기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
